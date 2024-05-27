@@ -31,16 +31,14 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
     swagger: {
       documentBuilder: (document) =>
         document.addBearerAuth({
-          name: 'AuthJWT',
-          type: 'http',
-          in: 'header',
           scheme: 'bearer',
+          type: 'http',
           bearerFormat: 'JWT',
         }),
       documentFactory: (document) => {
         document.security ??= [];
         document.security.push({
-          AuthJWT: [],
+          bearer: [],
         });
         return document;
       },
