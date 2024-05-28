@@ -10,11 +10,14 @@ import { CloudEvent } from 'firebase-functions/v2';
 import { CallableRequest } from 'firebase-functions/v2/https';
 import { MessagePublishedData } from 'firebase-functions/v2/pubsub';
 
-import { UNAUTHORIZED, USER_NOT_CREATED } from './auth/auth.exceptions.js';
 import { AuthContext } from './auth/auth.schema.js';
 import { AuthorizationContextSymbol } from './auth/authentication.guard.js';
 import { AuthContextAttributeKey } from './constants.js';
-import { MISSING_AUTHORIZATION_HEADER } from './exceptions.js';
+import {
+  MISSING_AUTHORIZATION_HEADER,
+  UNAUTHORIZED,
+  USER_NOT_CREATED,
+} from './exceptions.js';
 
 export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
   private readonly logger = Logger.create(this);

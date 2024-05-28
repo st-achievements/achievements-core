@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { formatZodErrorString, StApiName } from '@st-api/core';
+import { formatZodErrorString, safe, StApiName } from '@st-api/core';
 import { defineSecret } from 'firebase-functions/params';
 import { Redis } from 'ioredis';
 import { z } from 'zod';
@@ -13,7 +13,10 @@ const RedisCredentialsSchema = z
   .string()
   .trim()
   .min(1)
-  .transform((value) => JSON.parse(value))
+  .transform((value) => {
+    const [, json] = safe(() => JSON.parse(value));
+    return json ?? value;
+  })
   .pipe(
     z.object({
       host: z.string().trim().min(1),

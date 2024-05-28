@@ -13,3 +13,18 @@ export const MISSING_AUTHORIZATION_HEADER = exception({
   error: 'Header "Authorization" is missing',
   message: 'Header "Authorization" is missing',
 });
+
+export const UNAUTHORIZED = exception({
+  status: HttpStatus.UNAUTHORIZED,
+  errorCode: 'ACH-CORE-0003',
+  error: 'Unauthorized',
+});
+
+export const USER_NOT_CREATED = exception({
+  status: HttpStatus.FORBIDDEN,
+  errorCode: 'ACH-CORE-0004',
+  error:
+    'User is still being created and can not be used yet. Try again later.',
+  message:
+    'User is still being created and can not be used yet. Try again later.',
+});

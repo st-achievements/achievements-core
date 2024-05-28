@@ -15,6 +15,7 @@ import {
 import { z } from 'zod';
 
 import { AuthenticationGuard } from './auth/authentication.guard.js';
+import { AuthenticationService } from './auth/authentication.service.js';
 import { EventarcController } from './eventarc/eventarc.controller.js';
 import { EventarcService } from './eventarc/eventarc.service.js';
 import { FirebaseFunctionsController } from './firebase-functions/firebase-functions.controller.js';
@@ -54,6 +55,7 @@ export class AchievementsCoreModule {
       PubSubService,
       EventarcService,
       FirebaseFunctionsService,
+      AuthenticationService,
     ];
     const imports: DynamicModule['imports'] = [
       PubSubModule,
@@ -68,9 +70,7 @@ export class AchievementsCoreModule {
       }),
     ];
     const exports: DynamicModule['exports'] = [
-      PubSubService,
-      EventarcService,
-      FirebaseFunctionsService,
+      ...providers,
       FirebaseAdminModule,
       FirebaseModule,
     ];
