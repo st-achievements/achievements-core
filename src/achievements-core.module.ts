@@ -1,5 +1,6 @@
 import { DynamicModule, Module, Provider } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
+import { DrizzleOrmModule } from '@st-achievements/database';
 import {
   ParamIntSchema,
   Throttler,
@@ -68,11 +69,13 @@ export class AchievementsCoreModule {
         messagingSenderId: '984964234239',
         appId: '1:984964234239:web:647f0b73735664d622c5ca',
       }),
+      DrizzleOrmModule,
     ];
     const exports: DynamicModule['exports'] = [
       ...providers,
       FirebaseAdminModule,
       FirebaseModule,
+      DrizzleOrmModule,
     ];
     if (options.throttling) {
       imports.push(RedisModule);

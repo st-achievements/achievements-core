@@ -1,3 +1,4 @@
+import { DATABASE_CONNECTION_STRING } from '@st-achievements/database';
 import { getStateMetadata, safe } from '@st-api/core';
 import {
   CallableData,
@@ -46,6 +47,7 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
         return document;
       },
     },
+    secrets: [DATABASE_CONNECTION_STRING],
   };
 
   private setAuthContext(value: unknown): void {
