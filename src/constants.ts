@@ -1,1 +1,1 @@
-export const AuthContextAttributeKey = '__ACHIEVEMENTS_CORE_AUTH_CONTEXT__';
+export const AuthContextAttributeKey = 'ACHIEVEMENTS_CORE_AUTH_CONTEXT';
