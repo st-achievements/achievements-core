@@ -43,6 +43,7 @@ export class RedisThrottler extends Throttler {
     limit,
   }: ThrottlerOptionsArgs): Promise<void> {
     if (isEmulator()) {
+      this.logger.info('Skipping Throttler check because emulator is running');
       return;
     }
     const appName = this.stApiName;

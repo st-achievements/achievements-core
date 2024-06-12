@@ -28,3 +28,15 @@ export const USER_NOT_CREATED = exception({
   message:
     'User is still being created and can not be used yet. Try again later.',
 });
+
+export const USER_IS_NOT_THE_SAME_AS_AUTHORIZED = exception({
+  status: HttpStatus.FORBIDDEN,
+  errorCode: 'ACH-CORE-0005',
+  error: 'User is not authorized to access this resource',
+});
+
+export const COULD_NOT_FIND_USER_IN_THE_REQUEST = exception({
+  status: HttpStatus.BAD_REQUEST,
+  errorCode: 'ACH-CORE-0006',
+  message: 'Could not find the userId in the request',
+});

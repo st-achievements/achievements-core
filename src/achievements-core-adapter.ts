@@ -18,6 +18,8 @@ import {
   MISSING_AUTHORIZATION_HEADER,
   UNAUTHORIZED,
   USER_NOT_CREATED,
+  USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
+  INVALID_REDIS_CREDENTIALS,
 } from './exceptions.js';
 
 export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
@@ -31,6 +33,8 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
       MISSING_AUTHORIZATION_HEADER,
       UNAUTHORIZED,
       USER_NOT_CREATED,
+      USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
+      INVALID_REDIS_CREDENTIALS,
     ],
     swagger: {
       documentBuilder: (document) =>

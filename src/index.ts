@@ -4,8 +4,14 @@ import { getAuthContext } from './auth/get-auth-context.js';
 
 __INTERNAL_SET_GET_USER_ID_FROM_CONTEXT(() => getAuthContext().userId);
 
+export {
+  AssertAuthUser,
+  type AuthUserOptions,
+} from './auth/assert-auth-user.decorator.js';
 export { AuthContext } from './auth/auth.schema.js';
 export { AuthenticationGuard } from './auth/authentication.guard.js';
+export { AuthenticationService } from './auth/authentication.service.js';
+export { GetAuthContext } from './auth/get-auth-context.decorator.js';
 export { getAuthContext } from './auth/get-auth-context.js';
 export { EventarcService } from './eventarc/eventarc.service.js';
 export { FirebaseFunctionsService } from './firebase-functions/firebase-functions.service.js';
@@ -19,4 +25,7 @@ export { AchievementsCoreAdapter } from './achievements-core-adapter.js';
 export {
   MISSING_AUTHORIZATION_HEADER,
   INVALID_REDIS_CREDENTIALS,
+  USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
+  USER_NOT_CREATED,
+  UNAUTHORIZED,
 } from './exceptions.js';
