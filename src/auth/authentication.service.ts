@@ -1,4 +1,3 @@
-import { Injectable } from '@nestjs/common';
 import { Drizzle, usr } from '@st-achievements/database';
 import { safeAsync } from '@st-api/core';
 import { FirebaseAdminAuth, isEmulator, Logger } from '@st-api/firebase';
@@ -12,6 +11,7 @@ import {
 
 import { AuthContext } from './auth.schema.js';
 import { getAuthContext } from './get-auth-context.js';
+import { Injectable } from '@stlmpp/di';
 
 @Injectable()
 export class AuthenticationService {
@@ -58,7 +58,7 @@ export class AuthenticationService {
         where: eq(usr.user.externalId, userFirebase.uid),
       }));
     if (!user) {
-      this.logger.info(
+      this.logger.warn(
         'The user already exists on firebase, but it does not exists in the database',
       );
       throw USER_NOT_CREATED();

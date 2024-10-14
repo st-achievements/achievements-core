@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
 import { formatZodErrorString, safe, StApiName } from '@st-api/core';
 import { defineSecret } from 'firebase-functions/params';
 import { Redis } from 'ioredis';
 import { z } from 'zod';
 
 import { INVALID_REDIS_CREDENTIALS } from '../exceptions.js';
+import { FactoryProvider, Provider } from '@stlmpp/di';
 
 export const REDIS_CREDENTIALS: ReturnType<typeof defineSecret> =
   defineSecret('REDIS_CREDENTIALS');
@@ -25,12 +25,11 @@ const RedisCredentialsSchema = z
     }),
   );
 
-@Module({
-  exports: [Redis],
-  providers: [
-    {
-      provide: Redis,
-      useFactory: (apiName: string) => {
+export function provideRedis(): Provider[] {
+  return [
+    new FactoryProvider(
+      Redis,
+      (apiName) => {
         const result = RedisCredentialsSchema.safeParse(
           REDIS_CREDENTIALS.value(),
         );
@@ -47,8 +46,7 @@ const RedisCredentialsSchema = z
           connectionName: apiName,
         });
       },
-      inject: [StApiName],
-    },
-  ],
-})
-export class RedisModule {}
+      [StApiName],
+    ),
+  ];
+}

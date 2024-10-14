@@ -1,6 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { ZBody, ZRes } from '@st-api/core';
+import { Controller, Handler, ZBody, ZRes } from '@st-api/core';
 import { z } from 'zod';
 
 import { EventarcService } from './eventarc.service.js';
@@ -27,17 +25,19 @@ const BodySchema = z.object({
 });
 type BodyType = z.infer<typeof BodySchema>;
 
-@ApiTags('Emulator')
-@Controller('eventarc')
-export class EventarcController {
+// @ApiOperation({
+//   description: 'Use this API to publish events to Eventarc',
+// }) TODO
+// @ApiTags('Emulator')
+@Controller({
+  path: 'eventarc',
+  method: 'POST',
+})
+@ZRes(z.void())
+export class EventarcController implements Handler {
   constructor(private readonly eventarcService: EventarcService) {}
 
-  @Post()
-  @ZRes(z.void())
-  @ApiOperation({
-    description: 'Use this API to publish events to Eventarc',
-  })
-  async post(@ZBody(BodySchema) body: BodyType): Promise<void> {
+  async handle(@ZBody(BodySchema) body: BodyType): Promise<void> {
     await this.eventarcService.publish(
       body.events.map((event) => ({
         type: event.eventType,

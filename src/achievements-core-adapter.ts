@@ -15,44 +15,54 @@ import { AuthContext } from './auth/auth.schema.js';
 import { AuthorizationContextSymbol } from './auth/authentication.guard.js';
 import { AuthContextAttributeKey } from './constants.js';
 import {
+  INVALID_REDIS_CREDENTIALS,
   MISSING_AUTHORIZATION_HEADER,
   UNAUTHORIZED,
-  USER_NOT_CREATED,
   USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
-  INVALID_REDIS_CREDENTIALS,
+  USER_NOT_CREATED,
 } from './exceptions.js';
+import {
+  achievementsCoreModule,
+  AchievementsCoreOptions,
+} from './achievements-core.module.js';
 
 export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
-  private readonly logger = Logger.create(this);
-
-  readonly options: StFirebaseAppOptions = {
-    handlerOptions: {
-      preserveExternalChanges: true,
-    },
-    extraGlobalExceptions: [
-      MISSING_AUTHORIZATION_HEADER,
-      UNAUTHORIZED,
-      USER_NOT_CREATED,
-      USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
-      INVALID_REDIS_CREDENTIALS,
-    ],
-    swagger: {
-      documentBuilder: (document) =>
-        document.addBearerAuth({
-          scheme: 'bearer',
-          type: 'http',
-          bearerFormat: 'JWT',
-        }),
-      documentFactory: (document) => {
+  constructor(coreOptions: AchievementsCoreOptions) {
+    const { controllers, providers } = achievementsCoreModule(coreOptions);
+    this.options = {
+      handlerOptions: {
+        preserveExternalChanges: true,
+      },
+      extraGlobalExceptions: [
+        MISSING_AUTHORIZATION_HEADER,
+        UNAUTHORIZED,
+        USER_NOT_CREATED,
+        USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
+        INVALID_REDIS_CREDENTIALS,
+      ],
+      swaggerDocumentBuilder: (document) => {
         document.security ??= [];
         document.security.push({
           bearer: [],
         });
+        document.components ??= {};
+        document.components.securitySchemes ??= {};
+        document.components.securitySchemes.bearer = {
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          type: 'http',
+        };
         return document;
       },
-    },
-    secrets: [DATABASE_CONNECTION_STRING],
-  };
+      secrets: [DATABASE_CONNECTION_STRING],
+      controllers,
+      providers,
+    };
+  }
+
+  private readonly logger = Logger.create(this);
+
+  readonly options: StFirebaseAppOptions;
 
   private setAuthContext(value: unknown): void {
     let auth: AuthContext;

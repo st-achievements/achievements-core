@@ -1,15 +1,8 @@
-import {
-  applyDecorators,
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  UseGuards,
-} from '@nestjs/common';
-import type { Request } from 'express';
-
 import { COULD_NOT_FIND_USER_IN_THE_REQUEST } from '../exceptions.js';
 
 import { AuthenticationService } from './authentication.service.js';
+import { Injectable } from '@stlmpp/di';
+import { CanActivate, HandlerContext, UseGuards } from '@st-api/core';
 
 export interface AuthUserOptions {
   from?: 'headers' | 'params' | 'query';
@@ -23,7 +16,7 @@ const OPTIONS_DEFAULT = {
 
 export function AssertAuthUser(
   authUserOptions?: AuthUserOptions,
-): ClassDecorator & MethodDecorator {
+): ClassDecorator {
   const options: Required<AuthUserOptions> = {
     ...OPTIONS_DEFAULT,
     ...authUserOptions,
@@ -34,9 +27,8 @@ export function AssertAuthUser(
       private readonly authenticationService: AuthenticationService,
     ) {}
 
-    canActivate(context: ExecutionContext): boolean {
-      const request = context.switchToHttp().getRequest<Request>();
-      const userIdFromRequest = request[options.from][options.key];
+    handle(context: HandlerContext): boolean {
+      const userIdFromRequest = context[options.from][options.key];
       if (!userIdFromRequest || typeof userIdFromRequest !== 'string') {
         throw COULD_NOT_FIND_USER_IN_THE_REQUEST(
           `Could not find ${options.key} in the request ${options.from}`,
@@ -47,5 +39,7 @@ export function AssertAuthUser(
       return true;
     }
   }
-  return applyDecorators(UseGuards(AssertAuthUserGuard));
+  return (target) => {
+    UseGuards(AssertAuthUserGuard)(target);
+  };
 }
