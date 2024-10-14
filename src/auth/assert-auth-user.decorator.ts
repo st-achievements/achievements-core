@@ -29,7 +29,7 @@ export function AssertAuthUser(
 
     handle(context: HandlerContext): boolean {
       const userIdFromRequest = context[options.from][options.key];
-      if (!userIdFromRequest || typeof userIdFromRequest !== 'string') {
+      if (userIdFromRequest === undefined || userIdFromRequest === null) {
         throw COULD_NOT_FIND_USER_IN_THE_REQUEST(
           `Could not find ${options.key} in the request ${options.from}`,
         );

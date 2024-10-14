@@ -25,6 +25,7 @@ import {
   achievementsCoreModule,
   AchievementsCoreOptions,
 } from './achievements-core.module.js';
+import { REDIS_CREDENTIALS } from './redis/redis.module.js';
 
 export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
   constructor(coreOptions: AchievementsCoreOptions) {
@@ -54,7 +55,7 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
         };
         return document;
       },
-      secrets: [DATABASE_CONNECTION_STRING],
+      secrets: [DATABASE_CONNECTION_STRING, REDIS_CREDENTIALS],
       controllers,
       providers,
     };
