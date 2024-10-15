@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
 import { coerceArray } from '@st-api/core';
 import { Eventarc, EventarcPublishOptions } from '@st-api/firebase';
 
 import { getAuthContext } from '../auth/get-auth-context.js';
 import { AuthContextAttributeKey } from '../constants.js';
+import { Injectable } from '@stlmpp/di';
 
 @Injectable()
 export class EventarcService {

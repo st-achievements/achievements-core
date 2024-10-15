@@ -1,17 +1,17 @@
-import { DynamicModule, Module, Provider } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
-import { DrizzleOrmModule } from '@st-achievements/database';
 import {
+  GLOBAL_GUARDS,
+  Handler,
+  HonoAppOptions,
   ParamIntSchema,
   Throttler,
   ThrottlerGuard,
   ThrottlerOptionsToken,
 } from '@st-api/core';
 import {
-  FirebaseAdminModule,
-  FirebaseModule,
   isEmulator,
-  PubSubModule,
+  provideFirebase,
+  provideFirebaseAdmin,
+  providePubSub,
 } from '@st-api/firebase';
 import { z } from 'zod';
 
@@ -24,7 +24,9 @@ import { FirebaseFunctionsService } from './firebase-functions/firebase-function
 import { PubSubController } from './pub-sub/pub-sub.controller.js';
 import { PubSubService } from './pub-sub/pub-sub.service.js';
 import { RedisThrottler } from './redis/redis-throttler.js';
-import { RedisModule } from './redis/redis.module.js';
+import { Hono } from 'hono';
+import { Class } from 'type-fest';
+import { Provider } from '@stlmpp/di';
 
 const THROTTLER_OPTIONS_DEFAULT = z
   .object({
@@ -41,63 +43,49 @@ export interface AchievementsCoreOptions {
   throttling: boolean;
 }
 
-@Module({})
-export class AchievementsCoreModule {
-  static forRoot(options: AchievementsCoreOptions): DynamicModule {
-    const controllers: DynamicModule['controllers'] = [];
-    if (isEmulator()) {
-      controllers.push(
-        PubSubController,
-        EventarcController,
-        FirebaseFunctionsController,
-      );
-    }
-    const providers: Provider[] = [
-      PubSubService,
-      EventarcService,
-      FirebaseFunctionsService,
-      AuthenticationService,
-    ];
-    const imports: DynamicModule['imports'] = [
-      PubSubModule,
-      FirebaseAdminModule.forRoot(),
-      FirebaseModule.forRoot({
-        apiKey: 'AIzaSyCSIQOzFvIh-0988r0c-cuIPGqVP2jLscE',
-        authDomain: 'st-achievements.firebaseapp.com',
-        projectId: 'st-achievements',
-        storageBucket: 'st-achievements.appspot.com',
-        messagingSenderId: '984964234239',
-        appId: '1:984964234239:web:647f0b73735664d622c5ca',
-      }),
-      DrizzleOrmModule,
-    ];
-    const exports: DynamicModule['exports'] = [
-      ...providers,
-      FirebaseAdminModule,
-      FirebaseModule,
-      DrizzleOrmModule,
-    ];
-    if (options.throttling) {
-      imports.push(RedisModule);
-      exports.push(RedisModule);
-      providers.push(
-        { provide: APP_GUARD, useClass: ThrottlerGuard },
-        { provide: Throttler, useClass: RedisThrottler },
-        { provide: ThrottlerOptionsToken, useValue: THROTTLER_OPTIONS_DEFAULT },
-      );
-    }
-    if (options.authentication) {
-      providers.push({
-        provide: APP_GUARD,
-        useClass: AuthenticationGuard,
-      });
-    }
-    return {
-      module: AchievementsCoreModule,
-      providers,
-      imports,
-      exports,
-      controllers,
-    };
+export function achievementsCoreModule(
+  options: AchievementsCoreOptions,
+): Required<Pick<HonoAppOptions<Hono>, 'providers' | 'controllers'>> {
+  const controllers: Class<Handler>[] = [];
+  if (isEmulator()) {
+    controllers.push(
+      PubSubController,
+      EventarcController,
+      FirebaseFunctionsController,
+    );
   }
+  const providers: Array<Provider | Class<any>> = [
+    PubSubService,
+    EventarcService,
+    FirebaseFunctionsService,
+    AuthenticationService,
+    ...providePubSub(),
+    ...provideFirebaseAdmin(),
+    ...provideFirebase({
+      apiKey: 'AIzaSyCSIQOzFvIh-0988r0c-cuIPGqVP2jLscE',
+      authDomain: 'st-achievements.firebaseapp.com',
+      projectId: 'st-achievements',
+      storageBucket: 'st-achievements.appspot.com',
+      messagingSenderId: '984964234239',
+      appId: '1:984964234239:web:647f0b73735664d622c5ca',
+    }),
+  ];
+  if (options.authentication) {
+    providers.push({
+      provide: GLOBAL_GUARDS,
+      useClass: AuthenticationGuard,
+    });
+  }
+  if (options.throttling) {
+    providers.push(
+      { provide: GLOBAL_GUARDS, useClass: ThrottlerGuard },
+      { provide: Throttler, useClass: RedisThrottler },
+      { provide: ThrottlerOptionsToken, useValue: THROTTLER_OPTIONS_DEFAULT },
+    );
+  }
+
+  return {
+    controllers,
+    providers,
+  };
 }

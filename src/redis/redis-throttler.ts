@@ -1,4 +1,3 @@
-import { Inject, Injectable } from '@nestjs/common';
 import {
   formatZodErrorString,
   StApiName,
@@ -7,9 +6,11 @@ import {
   TOO_MANY_REQUESTS,
 } from '@st-api/core';
 import { isEmulator, Logger } from '@st-api/firebase';
-import { type Request, type Response } from 'express';
 import { Redis } from 'ioredis';
 import { z } from 'zod';
+import { Inject, Injectable } from '@stlmpp/di';
+import { getConnInfo } from '@hono/node-server/conninfo';
+import crypto from 'node:crypto';
 
 @Injectable()
 export class RedisThrottler extends Throttler {
@@ -48,10 +49,11 @@ export class RedisThrottler extends Throttler {
     }
     const appName = this.stApiName;
     const className = context.getClass().name;
-    const handlerName = context.getHandler().name;
-    const httpAdapter = context.switchToHttp();
-    const ip = httpAdapter.getRequest<Request>().ip;
-    const key = `${appName}-${className}-${handlerName}-${ip}`;
+    const connInfo = getConnInfo(context.c);
+    const uniqueKey = context.headers.authorization
+      ? String(context.headers.authorization)
+      : connInfo.remote.address || '-';
+    const key = `${appName}-${className}-${crypto.hash('md5', uniqueKey)}`;
 
     const results = await this.redis.call(
       'EVAL',
@@ -72,19 +74,21 @@ export class RedisThrottler extends Throttler {
 
     const [totalHits, timeToExpire] = parsed.data;
 
-    const response = httpAdapter.getResponse<Response>();
-
     const ttlSeconds = Math.floor(ttl / 1000);
     const timeToExpireSeconds = Math.floor(timeToExpire / 1000);
 
-    response
-      .header('RateLimit-Limit', String(limit))
-      .header('RateLimit-Remaining', String(Math.max(0, limit - totalHits)))
-      .header('RateLimit-Reset', String(timeToExpireSeconds))
-      .header('RateLimit-Policy', `${limit};w=${ttlSeconds}`);
+    context.c.header('');
+
+    context.c.res.headers.set('RateLimit-Limit', String(limit));
+    context.c.res.headers.set(
+      'RateLimit-Remaining',
+      String(Math.max(0, limit - totalHits)),
+    );
+    context.c.res.headers.set('RateLimit-Reset', String(timeToExpireSeconds));
+    context.c.res.headers.set('RateLimit-Policy', `${limit};w=${ttlSeconds}`);
 
     if (totalHits > limit) {
-      response.header('Retry-After', String(timeToExpireSeconds));
+      context.c.res.headers.set('Retry-After', String(timeToExpireSeconds));
       throw TOO_MANY_REQUESTS();
     }
   }

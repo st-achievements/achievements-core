@@ -1,6 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { ZBody, ZRes } from '@st-api/core';
+import { Controller, Handler, ZBody, ZRes } from '@st-api/core';
 import { z } from 'zod';
 
 import { PubSubService } from './pub-sub.service.js';
@@ -37,17 +35,19 @@ const BodySchema = z.object({
 });
 type BodyType = z.infer<typeof BodySchema>;
 
-@ApiTags('Emulator')
-@Controller('pub-sub')
-export class PubSubController {
+@ZRes(z.void())
+@Controller({
+  path: 'pub-sub',
+  method: 'POST',
+  openapi: {
+    description: 'Use this API to publish messages to a specific PubSub topic',
+    tags: ['Emulator'],
+  },
+})
+export class PubSubController implements Handler {
   constructor(private readonly pubSubService: PubSubService) {}
 
-  @Post()
-  @ZRes(z.void())
-  @ApiOperation({
-    description: 'Use this API to publish messages to a specific PubSub topic',
-  })
-  async post(@ZBody(BodySchema) body: BodyType): Promise<void> {
+  async handle(@ZBody(BodySchema) body: BodyType): Promise<void> {
     switch (body.mode) {
       case 'serial': {
         for (const message of body.messages) {

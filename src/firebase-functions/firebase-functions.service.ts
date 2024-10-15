@@ -1,4 +1,3 @@
-import { Injectable } from '@nestjs/common';
 import {
   CallableResult,
   FirebaseFunctions,
@@ -8,6 +7,7 @@ import { z, ZodSchema } from 'zod';
 
 import { getAuthContext } from '../auth/get-auth-context.js';
 import { AuthContextAttributeKey } from '../constants.js';
+import { Injectable } from '@stlmpp/di';
 
 @Injectable()
 export class FirebaseFunctionsService {

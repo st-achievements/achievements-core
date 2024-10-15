@@ -1,41 +1,43 @@
-import { Controller, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import { ZBody, zDto, ZParams } from '@st-api/core';
+import { Controller, Handler, ZBody, ZParams } from '@st-api/core';
 import { Logger } from '@st-api/firebase';
 import { z } from 'zod';
 
 import { FirebaseFunctionsService } from './firebase-functions.service.js';
 
-class CallableParamDto extends zDto(
-  z.object({
-    callableName: z.string().trim().min(1).openapi({
-      example: 'usr_creation',
-      description: 'Name of the callable',
-    }),
+const CallableParamDto = z.object({
+  callableName: z.string().trim().min(1).openapi({
+    example: 'usr_creation',
+    description: 'Name of the callable',
   }),
-) {}
+});
 
-class CallableBody extends zDto(
-  z.any().openapi({
-    example: {
-      id: 1,
-    },
-  }),
-) {}
+type CallableParamDto = z.output<typeof CallableParamDto>;
 
-@ApiTags('Emulator')
-@Controller('callable')
-export class FirebaseFunctionsController {
+const CallableBody = z.any().openapi({
+  example: {
+    id: 1,
+  },
+});
+
+type CallableBody = z.output<typeof CallableBody>;
+
+@Controller({
+  path: 'callable/:callableName',
+  method: 'POST',
+  openapi: {
+    tags: ['Emulator'],
+  },
+})
+export class FirebaseFunctionsController implements Handler {
   constructor(
     private readonly firebaseFunctionsService: FirebaseFunctionsService,
   ) {}
 
   private readonly logger = Logger.create(this);
 
-  @Post(':callableName')
-  async callable(
-    @ZParams() { callableName }: CallableParamDto,
-    @ZBody() body: CallableBody,
+  async handle(
+    @ZParams(CallableParamDto) { callableName }: CallableParamDto,
+    @ZBody(CallableBody) body: CallableBody,
   ): Promise<unknown> {
     this.logger.info(`Calling ${callableName} with body`, {
       body,

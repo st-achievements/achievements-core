@@ -1,9 +1,9 @@
 import { Topic } from '@google-cloud/pubsub';
-import { Injectable } from '@nestjs/common';
 import { PubSub } from '@st-api/firebase';
 
 import { getAuthContext } from '../auth/get-auth-context.js';
 import { AuthContextAttributeKey } from '../constants.js';
+import { Injectable } from '@stlmpp/di';
 
 @Injectable()
 export class PubSubService {

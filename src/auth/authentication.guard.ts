@@ -1,46 +1,29 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
-import { getStateMetadata } from '@st-api/core';
+import { CanActivate, getStateMetadata, HandlerContext } from '@st-api/core';
 import { isEmulator, Logger } from '@st-api/firebase';
-import { type Request } from 'express';
 
 import { MISSING_AUTHORIZATION_HEADER } from '../exceptions.js';
 
 import { AuthenticationService } from './authentication.service.js';
-import { SkipAuth } from './skip-auth.decorator.js';
+import { Injectable } from '@stlmpp/di';
 
 export const AuthorizationContextSymbol = Symbol('AuthorizationContext');
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-  constructor(
-    private readonly reflector: Reflector,
-    private readonly authenticationService: AuthenticationService,
-  ) {}
+  constructor(private readonly authenticationService: AuthenticationService) {}
 
   private readonly logger = Logger.create(this);
 
-  async canActivate(context: ExecutionContext): Promise<boolean> {
-    const skip = this.reflector.getAllAndOverride(SkipAuth, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
-    const emulator = isEmulator();
-    if (emulator || skip === true) {
-      if (emulator) {
-        this.logger.info(
-          'Skipping Authentication Guard because emulator is running',
-        );
-      }
-      if (skip === true) {
-        this.logger.info(
-          'Skipping Authentication Guard because SkipAuth was used',
-        );
-      }
+  async handle(context: HandlerContext): Promise<boolean> {
+    if (isEmulator()) {
+      this.logger.info(
+        'Skipping Authentication Guard because emulator is running',
+      );
       return true;
     }
-    const request = context.switchToHttp().getRequest<Request>();
-    const authorization = request.headers.authorization;
+    const authorization = context.headers.authorization
+      ? String(context.headers.authorization)
+      : undefined;
     if (!authorization) {
       throw MISSING_AUTHORIZATION_HEADER();
     }
