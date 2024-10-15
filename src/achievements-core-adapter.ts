@@ -1,4 +1,7 @@
-import { DATABASE_CONNECTION_STRING } from '@st-achievements/database';
+import {
+  DATABASE_CONNECTION_STRING,
+  provideDrizzle,
+} from '@st-achievements/database';
 import { getStateMetadata, safe } from '@st-api/core';
 import {
   CallableData,
@@ -25,7 +28,7 @@ import {
   achievementsCoreModule,
   AchievementsCoreOptions,
 } from './achievements-core.module.js';
-import { REDIS_CREDENTIALS } from './redis/redis.module.js';
+import { provideRedis, REDIS_CREDENTIALS } from './redis/redis.module.js';
 
 export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
   constructor(coreOptions: AchievementsCoreOptions) {
@@ -57,7 +60,7 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
       },
       secrets: [DATABASE_CONNECTION_STRING, REDIS_CREDENTIALS],
       controllers,
-      providers,
+      providers: [...providers, ...provideRedis(), ...provideDrizzle()],
     };
   }
 

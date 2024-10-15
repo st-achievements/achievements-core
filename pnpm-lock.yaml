@@ -8,31 +8,34 @@ importers:
 
   .:
     dependencies:
+      '@hono/node-server':
+        specifier: ~1.13.2
+        version: 1.13.2(hono@4.6.5)
+      hono:
+        specifier: ~4.6.5
+        version: 4.6.5
       http-status-codes:
         specifier: ~2.3.0
         version: 2.3.0
     devDependencies:
       '@google-cloud/pubsub':
-        specifier: ^4.7.2
+        specifier: ~4.7.2
         version: 4.7.2
-      '@hono/node-server':
-        specifier: ~1.13.2
-        version: 1.13.2(hono@4.6.4)
       '@microsoft/api-extractor':
-        specifier: ~7.47.9
-        version: 7.47.9(@types/node@20.14.8)
+        specifier: ~7.47.10
+        version: 7.47.10(@types/node@20.14.8)
       '@st-achievements/database':
-        specifier: 2.0.0-beta.0
-        version: 2.0.0-beta.0(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@st-api/firebase@6.0.0-beta.2(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(drizzle-orm@0.34.1(@opentelemetry/api@1.9.0)(pg@8.13.0))(firebase-functions@6.0.1(firebase-admin@12.6.0))(pg@8.13.0)
-      '@st-api/config':
         specifier: ~2.0.0
-        version: 2.0.0(@eslint/js@9.12.0)(eslint-plugin-unicorn@56.0.0(eslint@9.12.0))(eslint@9.12.0)(globals@15.11.0)(tsup@8.3.0(@microsoft/api-extractor@7.47.9(@types/node@20.14.8))(@swc/core@1.7.35)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0))(typescript-eslint@8.9.0(eslint@9.12.0)(typescript@5.6.3))(unplugin-swc@1.5.1(@swc/core@1.7.35)(rollup@4.24.0)(webpack-sources@3.2.3))(vitest@2.1.3(@types/node@20.14.8))
+        version: 2.0.0(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@st-api/firebase@6.0.0(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(drizzle-orm@0.35.0(@opentelemetry/api@1.9.0)(pg@8.13.0))(firebase-functions@6.0.1(firebase-admin@12.6.0))(pg@8.13.0)
+      '@st-api/config':
+        specifier: ~2.0.1
+        version: 2.0.1(@eslint/js@9.12.0)(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(eslint-plugin-unicorn@56.0.0(eslint@9.12.0))(eslint@9.12.0)(globals@15.11.0)(tsup@8.3.0(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(@swc/core@1.7.36)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0))(typescript-eslint@8.9.0(eslint@9.12.0)(typescript@5.6.3))(unplugin-swc@1.5.1(@swc/core@1.7.36)(rollup@4.24.0)(webpack-sources@3.2.3))(vitest@2.1.3(@types/node@20.14.8))
       '@st-api/core':
-        specifier: 6.0.0-beta.2
-        version: 6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8)
+        specifier: ~6.0.0
+        version: 6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8)
       '@st-api/firebase':
-        specifier: 6.0.0-beta.2
-        version: 6.0.0-beta.2(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8)
+        specifier: ~6.0.0
+        version: 6.0.0(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8)
       '@stlmpp/di':
         specifier: ~0.4.0
         version: 0.4.0(reflect-metadata@0.2.2)
@@ -40,8 +43,8 @@ importers:
         specifier: ~20.14.8
         version: 20.14.8
       drizzle-orm:
-        specifier: ^0.34.1
-        version: 0.34.1(@opentelemetry/api@1.9.0)(pg@8.13.0)
+        specifier: ~0.35.0
+        version: 0.35.0(@opentelemetry/api@1.9.0)(pg@8.13.0)
       eslint:
         specifier: ~9.12.0
         version: 9.12.0
@@ -49,23 +52,17 @@ importers:
         specifier: ~56.0.0
         version: 56.0.0(eslint@9.12.0)
       firebase-functions:
-        specifier: ^6.0.1
+        specifier: ~6.0.1
         version: 6.0.1(firebase-admin@12.6.0)
-      hono:
-        specifier: ~4.6.4
-        version: 4.6.4
       ioredis:
-        specifier: ^5.4.0
+        specifier: ~5.4.0
         version: 5.4.1
       prettier:
         specifier: ~3.3.3
         version: 3.3.3
-      rxjs:
-        specifier: ^7.8.1
-        version: 7.8.1
       tsup:
         specifier: ~8.3.0
-        version: 8.3.0(@microsoft/api-extractor@7.47.9(@types/node@20.14.8))(@swc/core@1.7.35)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0)
+        version: 8.3.0(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(@swc/core@1.7.36)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0)
       type-fest:
         specifier: ~4.26.1
         version: 4.26.1
@@ -76,7 +73,7 @@ importers:
         specifier: ~2.1.3
         version: 2.1.3(@types/node@20.14.8)
       zod:
-        specifier: ^3.23.8
+        specifier: ~3.23.8
         version: 3.23.8
 
 packages:
@@ -705,8 +702,8 @@ packages:
   '@microsoft/api-extractor-model@7.29.8':
     resolution: {integrity: sha512-t3Z/xcO6TRbMcnKGVMs4uMzv/gd5j0NhMiJIGjD4cJMeFJ1Hf8wnLSx37vxlRlL0GWlGJhnFgxvnaL6JlS+73g==}
 
-  '@microsoft/api-extractor@7.47.9':
-    resolution: {integrity: sha512-TTq30M1rikVsO5wZVToQT/dGyJY7UXJmjiRtkHPLb74Prx3Etw8+bX7Bv7iLuby6ysb7fuu1NFWqma+csym8Jw==}
+  '@microsoft/api-extractor@7.47.10':
+    resolution: {integrity: sha512-Fx5J3E8sC5EUeqaC85NXql3hXJc7/QO3NEr/jeBgVJwacRaHdkl3pKDhkkJ6yo/GWbRCv6QnyakU0QuKg8bMig==}
     hasBin: true
 
   '@microsoft/tsdoc-config@0.17.0':
@@ -880,21 +877,22 @@ packages:
   '@rushstack/ts-command-line@4.22.8':
     resolution: {integrity: sha512-XbFjOoV7qZHJnSuFUHv0pKaFA4ixyCuki+xMjsMfDwfvQjs5MYG0IK5COal3tRnG7KCDe2l/G+9LrzYE/RJhgg==}
 
-  '@st-achievements/database@2.0.0-beta.0':
-    resolution: {integrity: sha512-cMLKcZ9wpT2qW1uTWlrKnuhkqZShjYEIGnzODaIcQ2Bm+uyiXmjqOVJPDB5zf9YKglCNSuzVJQKgtcBs6xUAyw==, tarball: https://us-central1-npm.pkg.dev/st-achievements/st-achievements/@st-achievements/database/-/@st-achievements/database-2.0.0-beta.0.tgz}
+  '@st-achievements/database@2.0.0':
+    resolution: {integrity: sha512-WXzzbc9hOqbwJt0FX/cjZ0u1tLxNuqsHhP2aH9dbTreD7FNnSKdMgJAoToff/hghfw+NjKGFReQJgZwLMCGYJQ==, tarball: https://us-central1-npm.pkg.dev/st-achievements/st-achievements/@st-achievements/database/-/@st-achievements/database-2.0.0.tgz}
     engines: {node: '20', pnpm: ^9.0.0}
     peerDependencies:
-      '@st-api/core': ^5.0.0
-      '@st-api/firebase': ^5.5.0
-      '@stlmpp/di': ~0.4.0
-      drizzle-orm: ^0.31.1
-      firebase-functions: ^5.0.1
-      pg: ^8.12.0
+      '@st-api/core': ^6.0.0
+      '@st-api/firebase': ^6.0.0
+      '@stlmpp/di': ^0.4.0
+      drizzle-orm: ^0.35.0
+      firebase-functions: ^6.0.0
+      pg: ^8.13.0
 
-  '@st-api/config@2.0.0':
-    resolution: {integrity: sha512-bkhApwhQZZz0XfgYXrVufH8kyIX9h1LPkoGTW6PuGuIRIIDP+4RYqQXIkHNFFocvSM6C0jKfym0THf33D4Iygg==}
+  '@st-api/config@2.0.1':
+    resolution: {integrity: sha512-FBtUa2PGAdTOKNytaSw0hKjcGp+BlgRmXY2/gZ4VzFnrVPmQjAZwOaGvtgJqF6xP9q7fO6B4v2I7AafBBgJJuQ==}
     peerDependencies:
       '@eslint/js': ^9.12.0
+      '@microsoft/api-extractor': ^7.47.10
       eslint: ^9.12.0
       eslint-plugin-unicorn: ^56.0.0
       globals: ^15.11.0
@@ -903,23 +901,20 @@ packages:
       unplugin-swc: ^1.5.1
       vitest: ^2.1.2
 
-  '@st-api/core@6.0.0-beta.2':
-    resolution: {integrity: sha512-DISveC4opnwlNlL8hjO009H0/oD80lPcEegyJp9Ex9A7QBFG8BKqx2qbYtgVCqzbg3H1VsQmRoa2JTX3rkzsIA==}
+  '@st-api/core@6.0.0':
+    resolution: {integrity: sha512-KoXOpsHoakEVGqEJtK4y6Vc6F8acxFJPK69cJho1U1Ym0/3/XNIz1MhCZT9tgV3aSEujUdVtEGXcqWWfBm6oDQ==}
     engines: {node: '20', pnpm: ^9.0.0}
     peerDependencies:
-      '@hono/swagger-ui': ^0.4.1
-      '@st-api/zod-openapi': ^0.1.0
       '@stlmpp/di': ^0.4.0
-      hono: ^4.6.3
       reflect-metadata: ~0.2.2
       zod: ^3.23.0
 
-  '@st-api/firebase@6.0.0-beta.2':
-    resolution: {integrity: sha512-g6HIlwArIJcqmOjmhiurwsp7i0jHZSfvt3YNQ9jZ7oav0fl1/MEXNsUs5pja089DkheWNYtTU5k06V8ksnMyvg==}
+  '@st-api/firebase@6.0.0':
+    resolution: {integrity: sha512-6TpevrLz3j4WyijF/0rEpzx/BEPS4rQzh21rmuL1aou+ggvR7eJGOhW0BAZB6DuuzTX7U5xtQ3UXnCv1XeDYlg==}
     engines: {node: '20', pnpm: ^9.0.0}
     peerDependencies:
       '@google-cloud/pubsub': ^4.7.2
-      '@st-api/core': ^6.0.0-beta.0
+      '@st-api/core': ^6.0.0
       '@stlmpp/di': ^0.4.0
       firebase: ^10.14.1
       firebase-admin: ^12.6.0
@@ -939,68 +934,68 @@ packages:
     peerDependencies:
       reflect-metadata: ~0.2.2
 
-  '@swc/core-darwin-arm64@1.7.35':
-    resolution: {integrity: sha512-BQSSozVxjxS+SVQz6e3GC/+OBWGIK3jfe52pWdANmycdjF3ch7lrCKTHTU7eHwyoJ96mofszPf5AsiVJF34Fwg==}
+  '@swc/core-darwin-arm64@1.7.36':
+    resolution: {integrity: sha512-8vDczXzCgv3ceTPhEivlpGprN44YlrCK1nbfU9g2TrhV/Aiqi09W/eM5zLesdoM1Z3mJl492gc/8nlTkpDdusw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@swc/core-darwin-x64@1.7.35':
-    resolution: {integrity: sha512-44TYdKN/EWtkU88foXR7IGki9JzhEJzaFOoPevfi9Xe7hjAD/x2+AJOWWqQNzDPMz9+QewLdUVLyR6s5okRgtg==}
+  '@swc/core-darwin-x64@1.7.36':
+    resolution: {integrity: sha512-Pa2Gao7+Wf5m3SsK4abKRtd48AtoUnJInvaC3d077swBfgZjbjUbQvcpdc2dOeQtWwo49rFqUZJonMsL0jnPgQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [darwin]
 
-  '@swc/core-linux-arm-gnueabihf@1.7.35':
-    resolution: {integrity: sha512-ccfA5h3zxwioD+/z/AmYtkwtKz9m4rWTV7RoHq6Jfsb0cXHrd6tbcvgqRWXra1kASlE+cDWsMtEZygs9dJRtUQ==}
+  '@swc/core-linux-arm-gnueabihf@1.7.36':
+    resolution: {integrity: sha512-3YsMWd7V+WZEjbfBnLkkz/olcRBa8nyoK0iIOnNARJBMcYaJxjkJSMZpmSojCnIVwvjA1N83CPAbUL+W+fCnHg==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [linux]
 
-  '@swc/core-linux-arm64-gnu@1.7.35':
-    resolution: {integrity: sha512-hx65Qz+G4iG/IVtxJKewC5SJdki8PAPFGl6gC/57Jb0+jA4BIoGLD/J3Q3rCPeoHfdqpkCYpahtyUq8CKx41Jg==}
+  '@swc/core-linux-arm64-gnu@1.7.36':
+    resolution: {integrity: sha512-lqM3aBB7kJazJYOwHeA5OGNLqXoQPZ/76b3dV+XcjN1GhD0CcXz6mW5PRYVin6OSN1eKrKBKJjtDA1mqADDEvw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
 
-  '@swc/core-linux-arm64-musl@1.7.35':
-    resolution: {integrity: sha512-kL6tQL9No7UEoEvDRuPxzPTpxrvbwYteNRbdChSSP74j13/55G2/2hLmult5yFFaWuyoyU/2lvzjRL/i8OLZxg==}
+  '@swc/core-linux-arm64-musl@1.7.36':
+    resolution: {integrity: sha512-bqei2YDzvUfG0pth5W2xJaj0eG4XWYk0d/NJ75vBX6bkIzK6dC8iuKQ41jOfUWonnrAs7rTDDJW0sTn/evvRdw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
 
-  '@swc/core-linux-x64-gnu@1.7.35':
-    resolution: {integrity: sha512-Ke4rcLQSwCQ2LHdJX1FtnqmYNQ3IX6BddKlUtS7mcK13IHkQzZWp0Dcu6MgNA3twzb/dBpKX5GLy07XdGgfmyw==}
+  '@swc/core-linux-x64-gnu@1.7.36':
+    resolution: {integrity: sha512-03maXTUyaBjeCxlDltmdzHje1ryQt1C4OWmmNgSSRXjLb+GNnAenwOJMSrcvHP/aNClD2pwsFCnYKDGy+sYE6w==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
 
-  '@swc/core-linux-x64-musl@1.7.35':
-    resolution: {integrity: sha512-T30tlLnz0kYyDFyO5RQF5EQ4ENjW9+b56hEGgFUYmfhFhGA4E4V67iEx7KIG4u0whdPG7oy3qjyyIeTb7nElEw==}
+  '@swc/core-linux-x64-musl@1.7.36':
+    resolution: {integrity: sha512-XXysqLkvjtQnXm1zHqLhy00UYPv/gk5OtwR732X+piNisnEbcJBqI8Qp9O7YvLWllRcoP8IMBGDWLGdGLSpViA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
 
-  '@swc/core-win32-arm64-msvc@1.7.35':
-    resolution: {integrity: sha512-CfM/k8mvtuMyX+okRhemfLt784PLS0KF7Q9djA8/Dtavk0L5Ghnq+XsGltO3d8B8+XZ7YOITsB14CrjehzeHsg==}
+  '@swc/core-win32-arm64-msvc@1.7.36':
+    resolution: {integrity: sha512-k7+dmb13a/zPw+E4XYfPmLZFWJgcOcBRKIjYl9nQErtYsgsg3Ji6TBbsvJVETy23lNHyewZ17V5Vq6NzaG0hzg==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
 
-  '@swc/core-win32-ia32-msvc@1.7.35':
-    resolution: {integrity: sha512-ATB3uuH8j/RmS64EXQZJSbo2WXfRNpTnQszHME/sGaexsuxeijrp3DTYSFAA3R2Bu6HbIIX6jempe1Au8I3j+A==}
+  '@swc/core-win32-ia32-msvc@1.7.36':
+    resolution: {integrity: sha512-ridD3ay6YM2PEYHZXXFN+edYEv0FOynaqOBP+NSnGNHA35azItIjoIe+KNi4WltGtAjpKCHSpjGCNfna12wdYQ==}
     engines: {node: '>=10'}
     cpu: [ia32]
     os: [win32]
 
-  '@swc/core-win32-x64-msvc@1.7.35':
-    resolution: {integrity: sha512-iDGfQO1571NqWUXtLYDhwIELA/wadH42ioGn+J9R336nWx40YICzy9UQyslWRhqzhQ5kT+QXAW/MoCWc058N6Q==}
+  '@swc/core-win32-x64-msvc@1.7.36':
+    resolution: {integrity: sha512-j1z2Z1Ln9d0E3dHsPkC1K9XDh0ojhRPwV+GfRTu4D61PE+aYhYLvbJC6xPvL4/204QrStRS7eDu3m+BcDp3rgQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
 
-  '@swc/core@1.7.35':
-    resolution: {integrity: sha512-3cUteCTbr2r5jqfgx0r091sfq5Mgh6F1SQh8XAOnSvtKzwv2bC31mvBHVAieD1uPa2kHJhLav20DQgXOhpEitw==}
+  '@swc/core@1.7.36':
+    resolution: {integrity: sha512-bu7ymMX+LCJOSSrKank25Jaq66ymLVA9fOUuy4ck3/6rbXdLw+pIJPnIDKQ9uNcxww8KDxOuJk9Ui9pqR+aGFw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@swc/helpers': '*'
@@ -1450,15 +1445,6 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.4:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
     engines: {node: '>=6.0'}
@@ -1499,8 +1485,8 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  drizzle-orm@0.34.1:
-    resolution: {integrity: sha512-t+zCwyWWt8xTqtYV4doE/xYmT7hpv1L8pQ66zddEz+3VWyedBBtctjMAp22mAJPfyWurRQXUJ1nrTtqLq+DqNA==}
+  drizzle-orm@0.35.0:
+    resolution: {integrity: sha512-fyTKnQ6WZQqSUy6yM4Do2tJPBg1ALR0vJtO9xUTLLubD+0qS1PPuu8aVOeLZQo+g8RPJn+Vqoh30/3lSS8/a2w==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -1925,8 +1911,8 @@ packages:
     resolution: {integrity: sha512-kUGoI3p7u6B41z/dp33G6OaL7J4DRqRYwVmeIlwLClx7yaaAy7hoDExnuejTKtuDwfcatGmddHDEOjf6EyIxtQ==}
     engines: {node: '>=10.0.0'}
 
-  hono@4.6.4:
-    resolution: {integrity: sha512-T5WqBkTOcIQblqBKB5mpzaH/A+dSpvVe938xZJCHOmOuYfF7DSwE/9/10+BMvwSPq9N/f6LiQ38HxrZSQOsXKw==}
+  hono@4.6.5:
+    resolution: {integrity: sha512-qsmN3V5fgtwdKARGLgwwHvcdLKursMd+YOt69eGpl1dUCJb8mCd7hZfyZnBYjxCegBG7qkJRQRUy2oO25yHcyQ==}
     engines: {node: '>=16.9.0'}
 
   hosted-git-info@2.8.9:
@@ -2275,9 +2261,6 @@ packages:
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
-
-  ms@2.1.2:
-    resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -2859,11 +2842,11 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  tslib@2.6.2:
-    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
-
   tslib@2.7.0:
     resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+
+  tslib@2.8.0:
+    resolution: {integrity: sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==}
 
   tsup@8.3.0:
     resolution: {integrity: sha512-ALscEeyS03IomcuNdFdc0YWGVIkwH1Ws7nfTbAPuoILvEV2hpGQAY72LIOjglGo4ShWpZfpBqP/jpQVCzqYQag==}
@@ -3339,7 +3322,7 @@ snapshots:
       '@firebase/app-compat': 0.2.43
       '@firebase/component': 0.6.9
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
 
@@ -3352,7 +3335,7 @@ snapshots:
       '@firebase/installations': 0.6.9(@firebase/app@0.10.13)
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/app-check-compat@0.3.15(@firebase/app-compat@0.2.43)(@firebase/app@0.10.13)':
     dependencies:
@@ -3362,7 +3345,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
 
@@ -3376,7 +3359,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/app-compat@0.2.43':
     dependencies:
@@ -3384,7 +3367,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/app-types@0.9.2': {}
 
@@ -3394,7 +3377,7 @@ snapshots:
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
       idb: 7.1.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/auth-compat@0.5.14(@firebase/app-compat@0.2.43)(@firebase/app-types@0.9.2)(@firebase/app@0.10.13)':
     dependencies:
@@ -3403,7 +3386,7 @@ snapshots:
       '@firebase/auth-types': 0.12.2(@firebase/app-types@0.9.2)(@firebase/util@1.10.0)
       '@firebase/component': 0.6.9
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
       undici: 6.19.7
     transitivePeerDependencies:
       - '@firebase/app'
@@ -3423,13 +3406,13 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
       undici: 6.19.7
 
   '@firebase/component@0.6.9':
     dependencies:
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/data-connect@0.1.0(@firebase/app@0.10.13)':
     dependencies:
@@ -3438,7 +3421,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/database-compat@1.0.8':
     dependencies:
@@ -3447,7 +3430,7 @@ snapshots:
       '@firebase/database-types': 1.0.5
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/database-types@1.0.5':
     dependencies:
@@ -3462,7 +3445,7 @@ snapshots:
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
       faye-websocket: 0.11.4
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/firestore-compat@0.3.38(@firebase/app-compat@0.2.43)(@firebase/app-types@0.9.2)(@firebase/app@0.10.13)':
     dependencies:
@@ -3471,7 +3454,7 @@ snapshots:
       '@firebase/firestore': 4.7.3(@firebase/app@0.10.13)
       '@firebase/firestore-types': 3.0.2(@firebase/app-types@0.9.2)(@firebase/util@1.10.0)
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -3490,7 +3473,7 @@ snapshots:
       '@firebase/webchannel-wrapper': 1.0.1
       '@grpc/grpc-js': 1.9.15
       '@grpc/proto-loader': 0.7.13
-      tslib: 2.7.0
+      tslib: 2.8.0
       undici: 6.19.7
 
   '@firebase/functions-compat@0.3.14(@firebase/app-compat@0.2.43)(@firebase/app@0.10.13)':
@@ -3500,7 +3483,7 @@ snapshots:
       '@firebase/functions': 0.11.8(@firebase/app@0.10.13)
       '@firebase/functions-types': 0.6.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
 
@@ -3514,7 +3497,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/messaging-interop-types': 0.2.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
       undici: 6.19.7
 
   '@firebase/installations-compat@0.2.9(@firebase/app-compat@0.2.43)(@firebase/app-types@0.9.2)(@firebase/app@0.10.13)':
@@ -3524,7 +3507,7 @@ snapshots:
       '@firebase/installations': 0.6.9(@firebase/app@0.10.13)
       '@firebase/installations-types': 0.5.2(@firebase/app-types@0.9.2)
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -3539,11 +3522,11 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/util': 1.10.0
       idb: 7.1.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/logger@0.4.2':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/messaging-compat@0.2.12(@firebase/app-compat@0.2.43)(@firebase/app@0.10.13)':
     dependencies:
@@ -3551,7 +3534,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/messaging': 0.12.12(@firebase/app@0.10.13)
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
 
@@ -3565,7 +3548,7 @@ snapshots:
       '@firebase/messaging-interop-types': 0.2.2
       '@firebase/util': 1.10.0
       idb: 7.1.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/performance-compat@0.2.9(@firebase/app-compat@0.2.43)(@firebase/app@0.10.13)':
     dependencies:
@@ -3575,7 +3558,7 @@ snapshots:
       '@firebase/performance': 0.6.9(@firebase/app@0.10.13)
       '@firebase/performance-types': 0.2.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
 
@@ -3588,7 +3571,7 @@ snapshots:
       '@firebase/installations': 0.6.9(@firebase/app@0.10.13)
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/remote-config-compat@0.2.9(@firebase/app-compat@0.2.43)(@firebase/app@0.10.13)':
     dependencies:
@@ -3598,7 +3581,7 @@ snapshots:
       '@firebase/remote-config': 0.4.9(@firebase/app@0.10.13)
       '@firebase/remote-config-types': 0.3.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
 
@@ -3611,7 +3594,7 @@ snapshots:
       '@firebase/installations': 0.6.9(@firebase/app@0.10.13)
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/storage-compat@0.3.12(@firebase/app-compat@0.2.43)(@firebase/app-types@0.9.2)(@firebase/app@0.10.13)':
     dependencies:
@@ -3620,7 +3603,7 @@ snapshots:
       '@firebase/storage': 0.13.2(@firebase/app@0.10.13)
       '@firebase/storage-types': 0.8.2(@firebase/app-types@0.9.2)(@firebase/util@1.10.0)
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -3635,12 +3618,12 @@ snapshots:
       '@firebase/app': 0.10.13
       '@firebase/component': 0.6.9
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
       undici: 6.19.7
 
   '@firebase/util@1.10.0':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/vertexai-preview@0.0.4(@firebase/app-types@0.9.2)(@firebase/app@0.10.13)':
     dependencies:
@@ -3650,7 +3633,7 @@ snapshots:
       '@firebase/component': 0.6.9
       '@firebase/logger': 0.4.2
       '@firebase/util': 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@firebase/webchannel-wrapper@1.0.1': {}
 
@@ -3736,13 +3719,13 @@ snapshots:
       protobufjs: 7.4.0
       yargs: 17.7.2
 
-  '@hono/node-server@1.13.2(hono@4.6.4)':
+  '@hono/node-server@1.13.2(hono@4.6.5)':
     dependencies:
-      hono: 4.6.4
+      hono: 4.6.5
 
-  '@hono/swagger-ui@0.4.1(hono@4.6.4)':
+  '@hono/swagger-ui@0.4.1(hono@4.6.5)':
     dependencies:
-      hono: 4.6.4
+      hono: 4.6.5
 
   '@humanfs/core@0.19.0': {}
 
@@ -3793,7 +3776,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.47.9(@types/node@20.14.8)':
+  '@microsoft/api-extractor@7.47.10(@types/node@20.14.8)':
     dependencies:
       '@microsoft/api-extractor-model': 7.29.8(@types/node@20.14.8)
       '@microsoft/tsdoc': 0.15.0
@@ -3952,34 +3935,35 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@st-achievements/database@2.0.0-beta.0(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@st-api/firebase@6.0.0-beta.2(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(drizzle-orm@0.34.1(@opentelemetry/api@1.9.0)(pg@8.13.0))(firebase-functions@6.0.1(firebase-admin@12.6.0))(pg@8.13.0)':
+  '@st-achievements/database@2.0.0(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@st-api/firebase@6.0.0(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(drizzle-orm@0.35.0(@opentelemetry/api@1.9.0)(pg@8.13.0))(firebase-functions@6.0.1(firebase-admin@12.6.0))(pg@8.13.0)':
     dependencies:
-      '@st-api/core': 6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8)
-      '@st-api/firebase': 6.0.0-beta.2(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8)
+      '@st-api/core': 6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8)
+      '@st-api/firebase': 6.0.0(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8)
       '@stlmpp/di': 0.4.0(reflect-metadata@0.2.2)
       camelcase: 8.0.0
       dotenv: 16.4.5
-      drizzle-orm: 0.34.1(@opentelemetry/api@1.9.0)(pg@8.13.0)
+      drizzle-orm: 0.35.0(@opentelemetry/api@1.9.0)(pg@8.13.0)
       firebase-functions: 6.0.1(firebase-admin@12.6.0)
       pg: 8.13.0
 
-  '@st-api/config@2.0.0(@eslint/js@9.12.0)(eslint-plugin-unicorn@56.0.0(eslint@9.12.0))(eslint@9.12.0)(globals@15.11.0)(tsup@8.3.0(@microsoft/api-extractor@7.47.9(@types/node@20.14.8))(@swc/core@1.7.35)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0))(typescript-eslint@8.9.0(eslint@9.12.0)(typescript@5.6.3))(unplugin-swc@1.5.1(@swc/core@1.7.35)(rollup@4.24.0)(webpack-sources@3.2.3))(vitest@2.1.3(@types/node@20.14.8))':
+  '@st-api/config@2.0.1(@eslint/js@9.12.0)(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(eslint-plugin-unicorn@56.0.0(eslint@9.12.0))(eslint@9.12.0)(globals@15.11.0)(tsup@8.3.0(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(@swc/core@1.7.36)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0))(typescript-eslint@8.9.0(eslint@9.12.0)(typescript@5.6.3))(unplugin-swc@1.5.1(@swc/core@1.7.36)(rollup@4.24.0)(webpack-sources@3.2.3))(vitest@2.1.3(@types/node@20.14.8))':
     dependencies:
       '@eslint/js': 9.12.0
+      '@microsoft/api-extractor': 7.47.10(@types/node@20.14.8)
       eslint: 9.12.0
       eslint-plugin-unicorn: 56.0.0(eslint@9.12.0)
       globals: 15.11.0
-      tsup: 8.3.0(@microsoft/api-extractor@7.47.9(@types/node@20.14.8))(@swc/core@1.7.35)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0)
+      tsup: 8.3.0(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(@swc/core@1.7.36)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0)
       typescript-eslint: 8.9.0(eslint@9.12.0)(typescript@5.6.3)
-      unplugin-swc: 1.5.1(@swc/core@1.7.35)(rollup@4.24.0)(webpack-sources@3.2.3)
+      unplugin-swc: 1.5.1(@swc/core@1.7.36)(rollup@4.24.0)(webpack-sources@3.2.3)
       vitest: 2.1.3(@types/node@20.14.8)
 
-  '@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8)':
+  '@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8)':
     dependencies:
-      '@hono/swagger-ui': 0.4.1(hono@4.6.4)
+      '@hono/swagger-ui': 0.4.1(hono@4.6.5)
       '@st-api/zod-openapi': 0.1.0(openapi3-ts@4.4.0)(zod@3.23.8)
       '@stlmpp/di': 0.4.0(reflect-metadata@0.2.2)
-      hono: 4.6.4
+      hono: 4.6.5
       http-status-codes: 2.3.0
       openapi3-ts: 4.4.0
       reflect-metadata: 0.2.2
@@ -3987,18 +3971,18 @@ snapshots:
       type-fest: 4.26.1
       zod: 3.23.8
 
-  '@st-api/firebase@6.0.0-beta.2(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8)':
+  '@st-api/firebase@6.0.0(@google-cloud/pubsub@4.7.2)(@st-api/core@6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(firebase-admin@12.6.0)(firebase-functions@6.0.1(firebase-admin@12.6.0))(firebase@10.14.1)(reflect-metadata@0.2.2)(zod@3.23.8)':
     dependencies:
       '@google-cloud/pubsub': 4.7.2
-      '@hono/node-server': 1.13.2(hono@4.6.4)
-      '@hono/swagger-ui': 0.4.1(hono@4.6.4)
-      '@st-api/core': 6.0.0-beta.2(@hono/swagger-ui@0.4.1(hono@4.6.4))(@st-api/zod-openapi@0.1.0(openapi3-ts@4.4.0)(zod@3.23.8))(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(hono@4.6.4)(reflect-metadata@0.2.2)(zod@3.23.8)
+      '@hono/node-server': 1.13.2(hono@4.6.5)
+      '@hono/swagger-ui': 0.4.1(hono@4.6.5)
+      '@st-api/core': 6.0.0(@stlmpp/di@0.4.0(reflect-metadata@0.2.2))(reflect-metadata@0.2.2)(zod@3.23.8)
       '@stlmpp/di': 0.4.0(reflect-metadata@0.2.2)
       dayjs: 1.11.13
       firebase: 10.14.1
       firebase-admin: 12.6.0
       firebase-functions: 6.0.1(firebase-admin@12.6.0)
-      hono: 4.6.4
+      hono: 4.6.5
       http-status-codes: 2.3.0
       reflect-metadata: 0.2.2
       rxjs: 7.8.1
@@ -4017,51 +4001,51 @@ snapshots:
       tslib: 2.7.0
       type-fest: 4.26.1
 
-  '@swc/core-darwin-arm64@1.7.35':
+  '@swc/core-darwin-arm64@1.7.36':
     optional: true
 
-  '@swc/core-darwin-x64@1.7.35':
+  '@swc/core-darwin-x64@1.7.36':
     optional: true
 
-  '@swc/core-linux-arm-gnueabihf@1.7.35':
+  '@swc/core-linux-arm-gnueabihf@1.7.36':
     optional: true
 
-  '@swc/core-linux-arm64-gnu@1.7.35':
+  '@swc/core-linux-arm64-gnu@1.7.36':
     optional: true
 
-  '@swc/core-linux-arm64-musl@1.7.35':
+  '@swc/core-linux-arm64-musl@1.7.36':
     optional: true
 
-  '@swc/core-linux-x64-gnu@1.7.35':
+  '@swc/core-linux-x64-gnu@1.7.36':
     optional: true
 
-  '@swc/core-linux-x64-musl@1.7.35':
+  '@swc/core-linux-x64-musl@1.7.36':
     optional: true
 
-  '@swc/core-win32-arm64-msvc@1.7.35':
+  '@swc/core-win32-arm64-msvc@1.7.36':
     optional: true
 
-  '@swc/core-win32-ia32-msvc@1.7.35':
+  '@swc/core-win32-ia32-msvc@1.7.36':
     optional: true
 
-  '@swc/core-win32-x64-msvc@1.7.35':
+  '@swc/core-win32-x64-msvc@1.7.36':
     optional: true
 
-  '@swc/core@1.7.35':
+  '@swc/core@1.7.36':
     dependencies:
       '@swc/counter': 0.1.3
       '@swc/types': 0.1.13
     optionalDependencies:
-      '@swc/core-darwin-arm64': 1.7.35
-      '@swc/core-darwin-x64': 1.7.35
-      '@swc/core-linux-arm-gnueabihf': 1.7.35
-      '@swc/core-linux-arm64-gnu': 1.7.35
-      '@swc/core-linux-arm64-musl': 1.7.35
-      '@swc/core-linux-x64-gnu': 1.7.35
-      '@swc/core-linux-x64-musl': 1.7.35
-      '@swc/core-win32-arm64-msvc': 1.7.35
-      '@swc/core-win32-ia32-msvc': 1.7.35
-      '@swc/core-win32-x64-msvc': 1.7.35
+      '@swc/core-darwin-arm64': 1.7.36
+      '@swc/core-darwin-x64': 1.7.36
+      '@swc/core-linux-arm-gnueabihf': 1.7.36
+      '@swc/core-linux-arm64-gnu': 1.7.36
+      '@swc/core-linux-arm64-musl': 1.7.36
+      '@swc/core-linux-x64-gnu': 1.7.36
+      '@swc/core-linux-x64-musl': 1.7.36
+      '@swc/core-win32-arm64-msvc': 1.7.36
+      '@swc/core-win32-ia32-msvc': 1.7.36
+      '@swc/core-win32-x64-msvc': 1.7.36
 
   '@swc/counter@0.1.3': {}
 
@@ -4076,17 +4060,17 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
 
   '@types/caseless@0.12.5': {}
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
 
   '@types/cors@2.8.17':
     dependencies:
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
 
   '@types/estree@1.0.6': {}
 
@@ -4099,7 +4083,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.0.0':
     dependencies:
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
       '@types/qs': 6.9.16
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -4150,19 +4134,19 @@ snapshots:
   '@types/request@2.48.12':
     dependencies:
       '@types/caseless': 0.12.5
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
       '@types/tough-cookie': 4.0.5
       form-data: 2.5.2
 
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
       '@types/send': 0.17.4
 
   '@types/tough-cookie@4.0.5': {}
@@ -4556,10 +4540,6 @@ snapshots:
     dependencies:
       ms: 2.0.0
 
-  debug@4.3.4:
-    dependencies:
-      ms: 2.1.2
-
   debug@4.3.7:
     dependencies:
       ms: 2.1.3
@@ -4584,7 +4564,7 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  drizzle-orm@0.34.1(@opentelemetry/api@1.9.0)(pg@8.13.0):
+  drizzle-orm@0.35.0(@opentelemetry/api@1.9.0)(pg@8.13.0):
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
       pg: 8.13.0
@@ -5114,7 +5094,7 @@ snapshots:
 
   heap-js@2.5.0: {}
 
-  hono@4.6.4: {}
+  hono@4.6.5: {}
 
   hosted-git-info@2.8.9: {}
 
@@ -5182,7 +5162,7 @@ snapshots:
     dependencies:
       '@ioredis/commands': 1.2.0
       cluster-key-slot: 1.1.2
-      debug: 4.3.4
+      debug: 4.3.7
       denque: 2.1.0
       lodash.defaults: 4.2.0
       lodash.isarguments: 3.1.0
@@ -5436,8 +5416,6 @@ snapshots:
 
   ms@2.0.0: {}
 
-  ms@2.1.2: {}
-
   ms@2.1.3: {}
 
   mz@2.7.0:
@@ -5644,7 +5622,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.14.8
+      '@types/node': 20.14.15
       long: 5.2.3
 
   proxy-addr@2.0.7:
@@ -5762,7 +5740,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.8.0
 
   safe-buffer@5.2.1: {}
 
@@ -5992,11 +5970,11 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tslib@2.6.2: {}
-
   tslib@2.7.0: {}
 
-  tsup@8.3.0(@microsoft/api-extractor@7.47.9(@types/node@20.14.8))(@swc/core@1.7.35)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0):
+  tslib@2.8.0: {}
+
+  tsup@8.3.0(@microsoft/api-extractor@7.47.10(@types/node@20.14.8))(@swc/core@1.7.36)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.1)
       cac: 6.7.14
@@ -6015,8 +5993,8 @@ snapshots:
       tinyglobby: 0.2.9
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.47.9(@types/node@20.14.8)
-      '@swc/core': 1.7.35
+      '@microsoft/api-extractor': 7.47.10(@types/node@20.14.8)
+      '@swc/core': 1.7.36
       postcss: 8.4.47
       typescript: 5.6.3
     transitivePeerDependencies:
@@ -6065,10 +6043,10 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unplugin-swc@1.5.1(@swc/core@1.7.35)(rollup@4.24.0)(webpack-sources@3.2.3):
+  unplugin-swc@1.5.1(@swc/core@1.7.36)(rollup@4.24.0)(webpack-sources@3.2.3):
     dependencies:
       '@rollup/pluginutils': 5.1.2(rollup@4.24.0)
-      '@swc/core': 1.7.35
+      '@swc/core': 1.7.36
       load-tsconfig: 0.2.5
       unplugin: 1.14.1(webpack-sources@3.2.3)
     transitivePeerDependencies:

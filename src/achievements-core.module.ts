@@ -27,7 +27,6 @@ import { RedisThrottler } from './redis/redis-throttler.js';
 import { Hono } from 'hono';
 import { Class } from 'type-fest';
 import { Provider } from '@stlmpp/di';
-import { provideRedis } from './redis/redis.module.js';
 
 const THROTTLER_OPTIONS_DEFAULT = z
   .object({
@@ -70,7 +69,6 @@ export function achievementsCoreModule(
       messagingSenderId: '984964234239',
       appId: '1:984964234239:web:647f0b73735664d622c5ca',
     }),
-    ...provideRedis(),
   ];
   if (options.authentication) {
     providers.push({

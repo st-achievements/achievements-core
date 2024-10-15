@@ -25,13 +25,13 @@ const BodySchema = z.object({
 });
 type BodyType = z.infer<typeof BodySchema>;
 
-// @ApiOperation({
-//   description: 'Use this API to publish events to Eventarc',
-// }) TODO
-// @ApiTags('Emulator')
 @Controller({
   path: 'eventarc',
   method: 'POST',
+  openapi: {
+    description: 'Use this API to publish events to Eventarc',
+    tags: ['Emulator'],
+  },
 })
 @ZRes(z.void())
 export class EventarcController implements Handler {

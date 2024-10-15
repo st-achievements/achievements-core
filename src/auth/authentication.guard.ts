@@ -15,13 +15,10 @@ export class AuthenticationGuard implements CanActivate {
   private readonly logger = Logger.create(this);
 
   async handle(context: HandlerContext): Promise<boolean> {
-    const emulator = isEmulator();
-    if (emulator) {
-      if (emulator) {
-        this.logger.info(
-          'Skipping Authentication Guard because emulator is running',
-        );
-      }
+    if (isEmulator()) {
+      this.logger.info(
+        'Skipping Authentication Guard because emulator is running',
+      );
       return true;
     }
     const authorization = context.headers.authorization

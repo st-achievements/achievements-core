@@ -35,14 +35,14 @@ const BodySchema = z.object({
 });
 type BodyType = z.infer<typeof BodySchema>;
 
-// @ApiTags('Emulator')
-// @ApiOperation({
-//     description: 'Use this API to publish messages to a specific PubSub topic',
-//   })
 @ZRes(z.void())
 @Controller({
   path: 'pub-sub',
   method: 'POST',
+  openapi: {
+    description: 'Use this API to publish messages to a specific PubSub topic',
+    tags: ['Emulator'],
+  },
 })
 export class PubSubController implements Handler {
   constructor(private readonly pubSubService: PubSubService) {}

@@ -34,6 +34,9 @@ export class AuthenticationService {
       return;
     }
     const authContext = getAuthContext();
+    this.logger.debug(
+      `authContext.userId = ${authContext.userId} | userId = ${userId}`,
+    );
     if (authContext.userId !== userId) {
       throw USER_IS_NOT_THE_SAME_AS_AUTHORIZED();
     }
@@ -63,10 +66,12 @@ export class AuthenticationService {
       );
       throw USER_NOT_CREATED();
     }
-    return {
+    const authContext: AuthContext = {
       userId: user.id,
       externalId: userFirebase.uid,
       username: user.name,
     };
+    this.logger.debug({ authContext });
+    return authContext;
   }
 }

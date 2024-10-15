@@ -21,10 +21,12 @@ const CallableBody = z.any().openapi({
 
 type CallableBody = z.output<typeof CallableBody>;
 
-// @ApiTags('Emulator')
 @Controller({
   path: 'callable/:callableName',
   method: 'POST',
+  openapi: {
+    tags: ['Emulator'],
+  },
 })
 export class FirebaseFunctionsController implements Handler {
   constructor(

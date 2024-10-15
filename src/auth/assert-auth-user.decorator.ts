@@ -34,6 +34,7 @@ export function AssertAuthUser(
           `Could not find ${options.key} in the request ${options.from}`,
         );
       }
+
       const userId = Number(userIdFromRequest);
       this.authenticationService.assertAuthenticatedUser(userId);
       return true;
