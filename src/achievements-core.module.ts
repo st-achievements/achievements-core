@@ -70,20 +70,20 @@ export function achievementsCoreModule(
       appId: '1:984964234239:web:647f0b73735664d622c5ca',
     }),
   ];
-  if (options.authentication) {
-    providers.push({
-      provide: GLOBAL_GUARDS,
-      useClass: AuthenticationGuard,
-    });
-  }
   if (options.throttling) {
     providers.push(
-      { provide: GLOBAL_GUARDS, useClass: ThrottlerGuard },
+      { provide: GLOBAL_GUARDS, useClass: ThrottlerGuard, multi: true },
       { provide: Throttler, useClass: RedisThrottler },
       { provide: ThrottlerOptionsToken, useValue: THROTTLER_OPTIONS_DEFAULT },
     );
   }
-
+  if (options.authentication) {
+    providers.push({
+      provide: GLOBAL_GUARDS,
+      useClass: AuthenticationGuard,
+      multi: true,
+    });
+  }
   return {
     controllers,
     providers,

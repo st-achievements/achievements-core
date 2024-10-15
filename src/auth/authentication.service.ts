@@ -66,12 +66,10 @@ export class AuthenticationService {
       );
       throw USER_NOT_CREATED();
     }
-    const authContext: AuthContext = {
+    return {
       userId: user.id,
       externalId: userFirebase.uid,
       username: user.name,
     };
-    this.logger.debug({ authContext });
-    return authContext;
   }
 }
