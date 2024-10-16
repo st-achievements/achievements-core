@@ -36,6 +36,7 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
     this.options = {
       handlerOptions: {
         preserveExternalChanges: true,
+        region: 'southamerica-east1',
       },
       extraGlobalExceptions: [
         MISSING_AUTHORIZATION_HEADER,
