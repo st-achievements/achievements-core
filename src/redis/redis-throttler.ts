@@ -9,7 +9,6 @@ import { isEmulator, Logger } from '@st-api/firebase';
 import { Redis } from 'ioredis';
 import { z } from 'zod';
 import { Inject, Injectable } from '@stlmpp/di';
-import { getConnInfo } from '@hono/node-server/conninfo';
 import crypto from 'node:crypto';
 
 @Injectable()
@@ -49,10 +48,11 @@ export class RedisThrottler extends Throttler {
     }
     const appName = this.stApiName;
     const className = context.getClass().name;
-    const connInfo = getConnInfo(context.c);
-    const uniqueKey = context.headers.authorization
-      ? String(context.headers.authorization)
-      : connInfo.remote.address || '-';
+    const uniqueKey = String(
+      context.headers.authorization ||
+        context.c.req.header('x-forwarded-for') ||
+        '-',
+    );
     const key = `${appName}-${className}-${crypto.hash('md5', uniqueKey)}`;
 
     const results = await this.redis.call(
