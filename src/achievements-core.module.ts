@@ -27,6 +27,10 @@ import { RedisThrottler } from './redis/redis-throttler.js';
 import { Hono } from 'hono';
 import { Class } from 'type-fest';
 import { Provider } from '@stlmpp/di';
+import { AuthenticationMode } from './auth/authentication-mode.type.js';
+import { AuthenticationStrategy } from './auth/authentication.strategy.js';
+import { JwtAuthenticationService } from './auth/jwt-authentication.service.js';
+import { ApiKeyAuthenticationService } from './auth/api-key-authentication.service.js';
 
 const THROTTLER_OPTIONS_DEFAULT = z
   .object({
@@ -39,9 +43,17 @@ const THROTTLER_OPTIONS_DEFAULT = z
   });
 
 export interface AchievementsCoreOptions {
-  authentication: boolean;
+  authentication: AuthenticationMode | boolean;
   throttling: boolean;
 }
+
+const AuthenticationStrategyMap: Record<
+  AuthenticationMode,
+  Class<AuthenticationStrategy>
+> = {
+  JWT: JwtAuthenticationService,
+  ApiKey: ApiKeyAuthenticationService,
+} as const;
 
 export function achievementsCoreModule(
   options: AchievementsCoreOptions,
@@ -78,11 +90,22 @@ export function achievementsCoreModule(
     );
   }
   if (options.authentication) {
-    providers.push({
-      provide: GLOBAL_GUARDS,
-      useClass: AuthenticationGuard,
-      multi: true,
-    });
+    const authenticationMode =
+      typeof options.authentication === 'boolean'
+        ? 'JWT'
+        : options.authentication;
+    const strategy = AuthenticationStrategyMap[authenticationMode];
+    providers.push(
+      {
+        provide: GLOBAL_GUARDS,
+        useClass: AuthenticationGuard,
+        multi: true,
+      },
+      {
+        provide: AuthenticationStrategy,
+        useClass: strategy,
+      },
+    );
   }
   return {
     controllers,

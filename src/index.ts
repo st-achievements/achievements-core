@@ -11,6 +11,7 @@ export {
 export { AuthContext } from './auth/auth.schema.js';
 export { AuthenticationGuard } from './auth/authentication.guard.js';
 export { AuthenticationService } from './auth/authentication.service.js';
+export { type AuthenticationMode } from './auth/authentication-mode.type.js';
 export { getAuthContext } from './auth/get-auth-context.js';
 export { EventarcService } from './eventarc/eventarc.service.js';
 export { FirebaseFunctionsService } from './firebase-functions/firebase-functions.service.js';

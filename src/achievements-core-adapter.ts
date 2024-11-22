@@ -29,6 +29,7 @@ import {
   AchievementsCoreOptions,
 } from './achievements-core.module.js';
 import { provideRedis, REDIS_CREDENTIALS } from './redis/redis.module.js';
+import { GLOBAL_SALT_SECRET } from './auth/global-salt.secret.js';
 
 export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
   constructor(coreOptions: AchievementsCoreOptions) {
@@ -59,7 +60,11 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
         };
         return document;
       },
-      secrets: [DATABASE_CONNECTION_STRING, REDIS_CREDENTIALS],
+      secrets: [
+        DATABASE_CONNECTION_STRING,
+        REDIS_CREDENTIALS,
+        GLOBAL_SALT_SECRET,
+      ],
       controllers,
       providers: [...providers, ...provideRedis(), ...provideDrizzle()],
     };

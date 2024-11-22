@@ -1,16 +1,15 @@
 import { CanActivate, getStateMetadata, HandlerContext } from '@st-api/core';
 import { isEmulator, Logger } from '@st-api/firebase';
-
-import { MISSING_AUTHORIZATION_HEADER } from '../exceptions.js';
-
-import { AuthenticationService } from './authentication.service.js';
 import { Injectable } from '@stlmpp/di';
+import { AuthenticationStrategy } from './authentication.strategy.js';
 
 export const AuthorizationContextSymbol = Symbol('AuthorizationContext');
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-  constructor(private readonly authenticationService: AuthenticationService) {}
+  constructor(
+    private readonly authenticationStrategy: AuthenticationStrategy,
+  ) {}
 
   private readonly logger = Logger.create(this);
 
@@ -21,14 +20,7 @@ export class AuthenticationGuard implements CanActivate {
       );
       return true;
     }
-    const authorization = context.headers.authorization
-      ? String(context.headers.authorization)
-      : undefined;
-    if (!authorization) {
-      throw MISSING_AUTHORIZATION_HEADER();
-    }
-    const token = authorization.trim().replace('Bearer ', '');
-    const response = await this.authenticationService.authenticate(token);
+    const response = await this.authenticationStrategy.authenticate(context);
     getStateMetadata().set(AuthorizationContextSymbol, response);
     return true;
   }
