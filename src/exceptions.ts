@@ -40,3 +40,10 @@ export const COULD_NOT_FIND_USER_IN_THE_REQUEST = exception({
   errorCode: 'ACH-CORE-0006',
   message: 'Could not find the userId in the request',
 });
+
+export const MISSING_API_KEY = exception({
+  status: StatusCodes.UNAUTHORIZED,
+  errorCode: 'ACH-CORE-0007',
+  message: 'Header "x-api-key" is missing',
+  error: 'Header "x-api-key" is missing',
+});

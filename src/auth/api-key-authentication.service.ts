@@ -6,7 +6,7 @@ import { Drizzle, iam, usr } from '@st-achievements/database';
 import { GLOBAL_SALT_SECRET } from './global-salt.secret.js';
 import bcrypt from 'bcrypt';
 import { and, desc, eq, isNull } from 'drizzle-orm';
-import { UNAUTHORIZED } from '../exceptions.js';
+import { MISSING_API_KEY, UNAUTHORIZED } from '../exceptions.js';
 
 @Injectable()
 export class ApiKeyAuthenticationService extends AuthenticationStrategy {
@@ -19,7 +19,7 @@ export class ApiKeyAuthenticationService extends AuthenticationStrategy {
       ? String(context.headers['x-api-key'])
       : undefined;
     if (!apiKey) {
-      throw UNAUTHORIZED();
+      throw MISSING_API_KEY();
     }
     const globalSalt = GLOBAL_SALT_SECRET.value();
     const apiKeyHashed = await bcrypt.hash(apiKey, globalSalt);

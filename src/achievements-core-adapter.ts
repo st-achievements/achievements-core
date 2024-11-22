@@ -19,6 +19,7 @@ import { AuthorizationContextSymbol } from './auth/authentication.guard.js';
 import { AuthContextAttributeKey } from './constants.js';
 import {
   INVALID_REDIS_CREDENTIALS,
+  MISSING_API_KEY,
   MISSING_AUTHORIZATION_HEADER,
   UNAUTHORIZED,
   USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
@@ -45,19 +46,45 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
         USER_NOT_CREATED,
         USER_IS_NOT_THE_SAME_AS_AUTHORIZED,
         INVALID_REDIS_CREDENTIALS,
+        MISSING_API_KEY,
       ],
       swaggerDocumentBuilder: (document) => {
+        if (!coreOptions.authentication) {
+          return document;
+        }
+        const authentication =
+          typeof coreOptions.authentication === 'boolean'
+            ? 'JWT'
+            : coreOptions.authentication;
         document.security ??= [];
-        document.security.push({
-          bearer: [],
-        });
         document.components ??= {};
         document.components.securitySchemes ??= {};
-        document.components.securitySchemes.bearer = {
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-          type: 'http',
-        };
+        switch (authentication) {
+          case 'JWT': {
+            document.security.push({
+              bearer: [],
+            });
+
+            document.components.securitySchemes.bearer = {
+              scheme: 'bearer',
+              bearerFormat: 'JWT',
+              type: 'http',
+            };
+            break;
+          }
+          case 'ApiKey': {
+            document.components.securitySchemes.api_key = {
+              name: 'x-api-key',
+              type: 'apiKey',
+              in: 'header',
+            };
+            document.security.push({
+              api_key: [],
+            });
+            break;
+          }
+        }
+
         return document;
       },
       secrets: [
