@@ -4,7 +4,7 @@ import { HandlerContext } from '@st-api/core';
 import { AuthContext } from './auth.schema.js';
 import { Drizzle, iam, usr } from '@st-achievements/database';
 import { GLOBAL_SALT_SECRET } from './global-salt.secret.js';
-import bcrypt from 'bcrypt';
+import crypto from 'node:crypto';
 import { and, desc, eq, isNull } from 'drizzle-orm';
 import { MISSING_API_KEY, UNAUTHORIZED } from '../exceptions.js';
 
@@ -22,7 +22,7 @@ export class ApiKeyAuthenticationService extends AuthenticationStrategy {
       throw MISSING_API_KEY();
     }
     const globalSalt = GLOBAL_SALT_SECRET.value();
-    const apiKeyHashed = await bcrypt.hash(apiKey, globalSalt);
+    const apiKeyHashed = crypto.hash('sha256', `${apiKey}${globalSalt}`);
     const [user] = await this.drizzle
       .select({
         userId: usr.user.id,
