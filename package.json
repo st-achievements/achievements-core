@@ -1,6 +1,6 @@
 {
   "name": "@st-achievements/core",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/st-achievements/achievements-core#readme",
@@ -40,7 +40,7 @@
     "@st-achievements/database": "~2.1.0",
     "@st-api/config": "~2.0.2",
     "@st-api/core": "~6.1.0",
-    "@st-api/firebase": "~6.2.2",
+    "@st-api/firebase": "~6.2.3",
     "@stlmpp/di": "~0.4.0",
     "@types/node": "~20.14.8",
     "drizzle-orm": "~0.36.3",
