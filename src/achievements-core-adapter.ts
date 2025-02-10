@@ -95,11 +95,7 @@ export class AchievementsCoreAdapter implements StFirebaseAppAdapter {
       controllers,
       providers: [...providers, ...provideRedis(), ...provideDrizzle()],
       cors: {
-        origin: [
-          // TODO remove after prod
-          'http://localhost:4200',
-          'https://st-achievements.web.app/',
-        ],
+        origin: '*',
       },
     };
   }
