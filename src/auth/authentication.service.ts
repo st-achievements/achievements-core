@@ -1,6 +1,4 @@
-import { usr } from '@st-achievements/database';
 import { isEmulator, Logger } from '@st-api/firebase';
-import { InferSelectModel } from 'drizzle-orm';
 
 import { USER_IS_NOT_THE_SAME_AS_AUTHORIZED } from '../exceptions.js';
 import { getAuthContext } from './get-auth-context.js';
